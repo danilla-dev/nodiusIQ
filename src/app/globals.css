@@ -1,0 +1,293 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+	/* GŁÓWNE KOLORY MARKI */
+	/* Głęboki Antracyt */
+	/* Jasny Szary / Srebrny */
+
+	--card: #1b2a41; /* Ciemny Granat dla kafelków */
+	--card-foreground: #dcdcdc;
+
+	--popover: #1a1a1a;
+	--popover-foreground: #dcdcdc;
+
+	/* AKCENTY */
+	--primary: #00aeef; /* Elektryczny Błękit */
+	--primary-foreground: #ffffff;
+
+	--secondary: #325f82; /* Gwiezdny Niebieski */
+	--secondary-foreground: #ffffff;
+
+	--muted: #262626;
+	--muted-foreground: #a1a1aa;
+
+	--accent: #a88566; /* Miedź - do subtelnych detali */
+	--accent-foreground: #ffffff;
+
+	--destructive: #ef4444;
+	--destructive-foreground: #ffffff;
+
+	--border: #333333;
+	--input: #333333;
+	--ring: #00aeef;
+
+	--radius: 0.625rem;
+
+	--background: #1a1a1a;
+
+	--foreground: #dcdcdc;
+
+	--chart-1: #00aeef;
+
+	--chart-2: #325f82;
+
+	--chart-3: #a88566;
+
+	--chart-4: #1b2a41;
+
+	--chart-5: #dcdcdc;
+
+	--sidebar: #1a1a1a;
+
+	--sidebar-foreground: #dcdcdc;
+
+	--sidebar-primary: #00aeef;
+
+	--sidebar-primary-foreground: #ffffff;
+
+	--sidebar-accent: #1b2a41;
+
+	--sidebar-accent-foreground: #dcdcdc;
+
+	--sidebar-border: #333333;
+
+	--sidebar-ring: #00aeef;
+}
+
+/* Wymuszamy ciemny motyw jako domyślny dla całej aplikacji */
+body {
+	background-color: var(--background);
+	font-family: var(--font-sans); /* Używa Geist Sans z Next.js */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-border: var(--border);
+	--color-ring: var(--ring);
+
+	--color-granat: var(--card); /* Możesz użyć zmiennej --card, bo to Twój granat */
+	--color-antracyt: var(--background); /* Możesz użyć --background, bo to Twój antracyt */
+
+	--font-sans: var(--font-sans);
+	--font-mono: var(--font-geist-mono);
+	--font-heading: var(--font-sans);
+	--color-sidebar-ring: var(--sidebar-ring);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar: var(--sidebar);
+	--color-chart-5: var(--chart-5);
+	--color-chart-4: var(--chart-4);
+	--color-chart-3: var(--chart-3);
+	--color-chart-2: var(--chart-2);
+	--color-chart-1: var(--chart-1);
+	--color-input: var(--input);
+	--color-destructive: var(--destructive);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-muted: var(--muted);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-popover: var(--popover);
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.2);
+	--radius-4xl: calc(var(--radius) * 2.6);
+}
+@layer utilities {
+	/* --- 1. SEKCJE I UKŁAD (LAYOUT) --- */
+
+	/* Stosuj do głównych kontenerów sekcji, aby zachować marginesy boczne */
+	.niq-container {
+		@apply container mx-auto px-4 md:px-6;
+	}
+
+	/* Stosuj do sekcji, które mają być od siebie wyraźnie oddzielone pionowo */
+	.niq-section-padding {
+		@apply py-16 md:py-24;
+	}
+
+	/* --- 2. KAFELKI I ELEMENTY INTERFEJSU (CARDS & UI) --- */
+
+	/* Bazowy kafelek NodusIQ - identyczny jak ten w "Usługi" */
+	.niq-card {
+		@apply bg-card text-card-foreground border border-border rounded-xl p-8 transition-all;
+	}
+
+	/* Subtelny, miedziany detal na dole kafelka (jak na projekcie) */
+	.niq-card-copper-line {
+		@apply border-b-2 border-accent/70;
+	}
+
+	/* Kafelek z efektem podświetlenia (błękitny blask) przy najechaniu */
+	.niq-card-hover {
+		@apply transition-all duration-300;
+	}
+	.niq-card-hover:hover {
+		@apply border-primary/50 shadow-[0_0_20px_0_rgba(0,174,239,0.3)];
+	}
+
+	/* --- 3. TYPOGRAFIA (NAGŁÓWKI & TEKST) --- */
+
+	/* Duży, centralny nagłówek (H1) na start strony (Hero) */
+	.niq-heading-hero {
+		@apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-foreground text-center;
+	}
+
+	/* Mniejszy nagłówek sekcji (H2) lub tytuł korzyści */
+	.niq-heading-section {
+		@apply text-3xl md:text-4xl font-bold tracking-tight text-foreground;
+	}
+
+	/* Nagłówek dla mniejszych kart, np. tytuł usługi (H3) */
+	.niq-heading-card {
+		@apply text-xl font-semibold tracking-tight text-foreground;
+	}
+
+	/* --- 4. PRZYCISKI (BUTTONS) & INTERAKCJE --- */
+
+	/* Główny, błękitny przycisk (CTA) - jak "ZAMÓW DARMOWĄ WYCENĘ" */
+	.niq-btn-primary {
+		@apply bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-full transition-colors;
+	}
+	.niq-btn-primary:hover {
+		@apply bg-primary/90;
+	}
+
+	/* Drugorzędny przycisk - jak "POZNAJ ROZWIĄZANIA" */
+	.niq-btn-secondary {
+		@apply bg-transparent text-foreground border border-border/80 font-semibold px-8 py-3 rounded-full transition-colors;
+	}
+	.niq-btn-secondary:hover {
+		@apply border-foreground/30 bg-secondary/10;
+	}
+
+	/* --- 5. TŁA I DEKORACJE --- */
+
+	/* Subtelne tło z siecią połączeń (Nodus) w kolorze Gwiezdnym Niebieskim */
+	.niq-bg-nodus {
+		@apply bg-[url('/nodus-bg.svg')] bg-repeat bg-center;
+	}
+
+	/* Gradient przechodzący od Granatu do Antracytu - fajny na start sekcji Hero */
+	.niq-bg-hero-gradient {
+		@apply bg-gradient-to-b from-granat/80 to-antracyt;
+	}
+
+	/* --- 6. ELEMENTY POMOCNICZE --- */
+
+	/* Cienki, miedziany oddzielacz (oddzielający sekcje lub tematy) */
+	.niq-divider-copper {
+		@apply h-px border-0 bg-accent/60;
+	}
+
+	/* Błękitny ptaszek (check-mark) na liście korzyści */
+	.niq-icon-check {
+		@apply h-5 w-5 text-primary flex-shrink-0;
+	}
+}
+
+.dark {
+	/* GŁÓWNE KOLORY MARKI */
+	/* Głęboki Antracyt */
+	/* Jasny Szary / Srebrny */
+
+	--card: #1b2a41; /* Ciemny Granat dla kafelków */
+	--card-foreground: #dcdcdc;
+
+	--popover: #1a1a1a;
+	--popover-foreground: #dcdcdc;
+
+	/* AKCENTY */
+	--primary: #00aeef; /* Elektryczny Błękit */
+	--primary-foreground: #ffffff;
+
+	--secondary: #325f82; /* Gwiezdny Niebieski */
+	--secondary-foreground: #ffffff;
+
+	--muted: #262626;
+	--muted-foreground: #a1a1aa;
+
+	--accent: #a88566; /* Miedź - do subtelnych detali */
+	--accent-foreground: #ffffff;
+
+	--destructive: #ef4444;
+	--destructive-foreground: #ffffff;
+
+	--border: #333333;
+	--input: #333333;
+	--ring: #00aeef;
+
+	--radius: 0.625rem;
+
+	--background: #1a1a1a;
+
+	--foreground: #dcdcdc;
+
+	--chart-1: #00aeef;
+
+	--chart-2: #325f82;
+
+	--chart-3: #a88566;
+
+	--chart-4: #1b2a41;
+
+	--chart-5: #dcdcdc;
+
+	--sidebar: #1a1a1a;
+
+	--sidebar-foreground: #dcdcdc;
+
+	--sidebar-primary: #00aeef;
+
+	--sidebar-primary-foreground: #ffffff;
+
+	--sidebar-accent: #1b2a41;
+
+	--sidebar-accent-foreground: #dcdcdc;
+
+	--sidebar-border: #333333;
+
+	--sidebar-ring: #00aeef;
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+	html {
+		@apply font-sans;
+	}
+}
