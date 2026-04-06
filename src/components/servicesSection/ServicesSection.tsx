@@ -7,7 +7,7 @@ import { ServiceCard } from './ServiceCard'
 
 export function Services() {
 	return (
-		<section id='uslugi' className='py-20 md:py-32 relative z-10 '>
+		<section id='uslugi' className='py-20 md:py-32 relative z-10 overflow-hidden'>
 			{/* --- WARSTWA TŁA SEKCJI (Inżynieryjny sznyt w nagłówku) --- */}
 
 			<div className='container relative z-10 mx-auto px-4 md:px-6'>
