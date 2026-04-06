@@ -10,10 +10,13 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
+import { sendContactEmail } from '@/actions/sendEmail' // Server Action do obsługi wysyłki maila (Resend)
+
 // Schemat walidacji Zod
 const formSchema = z.object({
 	name: z.string().min(2, 'Imię jest wymagane'),
 	tel: z.string().min(9, 'Podaj poprawny numer telefonu'),
+	email: z.string().email('Podaj poprawny adres email'),
 	message: z.string().min(5, 'Wiadomość jest zbyt krótka'),
 })
 
@@ -32,11 +35,22 @@ export function Contact() {
 		},
 	})
 
-	function onSubmit(values: z.infer<typeof formSchema>) {
-		// Tutaj w przyszłości podepniesz Resend lub Server Action
-		console.log(values)
-		alert('Wiadomość wysłana! Odezwiemy się niebawem.')
-		reset()
+	async function onSubmit(values: z.infer<typeof formSchema>) {
+		try {
+			const result = await sendContactEmail(values)
+
+			if (result.error) {
+				// Tutaj obsługa błędu (np. toast z błędem)
+				alert(result.error)
+				return
+			}
+
+			// Sukces
+			alert('Wiadomość wysłana! Odezwiemy się niebawem.')
+			reset()
+		} catch (error) {
+			alert('Coś poszło nie tak. Spróbuj ponownie.')
+		}
 	}
 
 	return (
@@ -71,6 +85,15 @@ export function Contact() {
 										className={`bg-background/50 border-border/60 h-12 ${errors.tel ? 'border-destructive' : ''}`}
 									/>
 									{errors.tel && <p className='text-sm font-medium text-destructive'>{errors.tel.message}</p>}
+								</div>
+								<div className='space-y-2 text-left'>
+									<Input
+										placeholder='Email'
+										type='email'
+										{...register('email')}
+										className={`bg-background/50 border-border/60 h-12 ${errors.email ? 'border-destructive' : ''}`}
+									/>
+									{errors.email && <p className='text-sm font-medium text-destructive'>{errors.email.message}</p>}
 								</div>
 							</div>
 							<div className='space-y-2 text-left'>

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 		siteName: 'NodiusIQ',
 		images: [
 			{
-				url: '/og-image.jpg', // Musisz dodać taki obrazek do folderu /public (1200x630px)
+				url: '/og-image.png', // Musisz dodać taki obrazek do folderu /public (1200x630px)
 				width: 1200,
 				height: 630,
 				alt: 'NodiusIQ Smart Home Solutions',
@@ -49,6 +49,40 @@ export const metadata: Metadata = {
 	},
 }
 
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Electrician', // Specyficzny typ dla elektryka
+	name: 'NodiusIQ - Inteligentne Instalacje',
+	image: 'https://nodusiq.pl/og-image.png',
+	'@id': 'https://nodusiq.pl',
+	url: 'https://nodusiq.pl',
+	telephone: '+48123456789',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: 'Strobanda',
+		addressLocality: 'Toruń',
+		postalCode: '87-100',
+		addressCountry: 'PL',
+	},
+	geo: {
+		'@type': 'GeoCoordinates',
+		latitude: 53.01379, // Koordynaty Torunia
+		longitude: 18.59844,
+	},
+	areaServed: {
+		'@type': 'City',
+		name: 'Toruń',
+	},
+	openingHoursSpecification: {
+		'@type': 'OpeningHoursSpecification',
+		dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+		opens: '08:00',
+		closes: '18:00',
+	},
+}
+
+// W komponencie React:
+
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -61,6 +95,7 @@ export default function RootLayout({
 		>
 			<Navbar />
 			<body className='min-h-full flex flex-col'>{children}</body>
+			<script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 		</html>
 	)
 }
