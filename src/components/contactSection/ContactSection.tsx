@@ -1,136 +1,81 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import * as z from 'zod'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MessageSquareHeart } from 'lucide-react'
-
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-
-import { sendContactEmail } from '@/actions/sendEmail' // Server Action do obsługi wysyłki maila (Resend)
-
-// Schemat walidacji Zod
-const formSchema = z.object({
-	name: z.string().min(2, 'Imię jest wymagane'),
-	tel: z.string().min(9, 'Podaj poprawny numer telefonu'),
-	email: z.string().email('Podaj poprawny adres email'),
-	message: z.string().min(5, 'Wiadomość jest zbyt krótka'),
-})
+import { Mail, Phone } from 'lucide-react'
+import { Card, CardContent } from '@/components/ui/card'
+import { ContactForm } from './ContactForm'
 
 export function Contact() {
-	const {
-		register,
-		handleSubmit,
-		reset,
-		formState: { errors, isSubmitting },
-	} = useForm<z.infer<typeof formSchema>>({
-		resolver: zodResolver(formSchema),
-		defaultValues: {
-			name: '',
-			tel: '',
-			message: '',
-		},
-	})
-
-	async function onSubmit(values: z.infer<typeof formSchema>) {
-		try {
-			const result = await sendContactEmail(values)
-
-			if (result.error) {
-				// Tutaj obsługa błędu (np. toast z błędem)
-				alert(result.error)
-				return
-			}
-
-			// Sukces
-			alert('Wiadomość wysłana! Odezwiemy się niebawem.')
-			reset()
-		} catch (error) {
-			alert('Coś poszło nie tak. Spróbuj ponownie.')
-		}
-	}
-
 	return (
 		<section id='kontakt' className='py-20 md:py-32 bg-background relative overflow-hidden'>
+			{/* TŁO: Poświata za formularzem */}
+			<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[500px] bg-primary/5 blur-[120px] pointer-events-none z-0' />
+
 			<div className='container mx-auto px-4 md:px-6 relative z-10'>
 				<div className='max-w-3xl mx-auto text-center space-y-12'>
-					<div className='space-y-4'>
-						<h2 className='text-3xl md:text-4xl font-bold tracking-tight text-foreground'>Zrealizujmy Twój plan.</h2>
-					</div>
-
+					{/* NAGŁÓWEK SEKCJI */}
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
-						className='niq-card p-6 md:p-10 border-primary/20 bg-card/50 backdrop-blur-sm'
+						className='space-y-4'
 					>
-						<form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
-							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='space-y-2 text-left'>
-									<Input
-										placeholder='Imię'
-										{...register('name')}
-										className={`bg-background/50 border-border/60 h-12 ${errors.name ? 'border-destructive' : ''}`}
-									/>
-									{errors.name && <p className='text-sm font-medium text-destructive'>{errors.name.message}</p>}
-								</div>
-								<div className='space-y-2 text-left'>
-									<Input
-										placeholder='Telefon'
-										type='tel'
-										{...register('tel')}
-										className={`bg-background/50 border-border/60 h-12 ${errors.tel ? 'border-destructive' : ''}`}
-									/>
-									{errors.tel && <p className='text-sm font-medium text-destructive'>{errors.tel.message}</p>}
-								</div>
-								<div className='space-y-2 text-left'>
-									<Input
-										placeholder='Email'
-										type='email'
-										{...register('email')}
-										className={`bg-background/50 border-border/60 h-12 ${errors.email ? 'border-destructive' : ''}`}
-									/>
-									{errors.email && <p className='text-sm font-medium text-destructive'>{errors.email.message}</p>}
-								</div>
-							</div>
-							<div className='space-y-2 text-left'>
-								<Textarea
-									placeholder='Wiadomość'
-									{...register('message')}
-									className={`bg-background/50 border-border/60 min-h-[150px] resize-none ${errors.message ? 'border-destructive' : ''}`}
-								/>
-								{errors.message && <p className='text-sm font-medium text-destructive'>{errors.message.message}</p>}
-							</div>
-							<Button
-								type='submit'
-								disabled={isSubmitting}
-								className='w-full h-14 text-base font-bold rounded-xl uppercase tracking-wider shadow-[0_0_20px_rgba(0,174,239,0.2)]'
-							>
-								{isSubmitting ? 'Wysyłanie...' : 'Zamów darmową wycenę'}
-							</Button>
-						</form>
+						<span className='px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-[0.2em] uppercase'>
+							Kontakt
+						</span>
+						<h2 className='text-4xl md:text-5xl lg:text-6xl mt-4 font-black tracking-tighter text-foreground uppercase leading-[0.95]'>
+							Zrealizujmy <br />
+							<span className='inline-block pr-4 text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-[#A88566] italic'>
+								Twój plan
+							</span>
+						</h2>
 					</motion.div>
 
-					{/* Dane kontaktowe i Sociale */}
-					<div className='flex flex-col md:flex-row items-center justify-center gap-8 pt-8 text-muted-foreground'>
-						<a
+					{/* KARTA FORMULARZA */}
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ delay: 0.2 }}
+					>
+						<Card className='border-border/40 bg-card/50 backdrop-blur-xl text-left shadow-2xl rounded-3xl overflow-hidden'>
+							<div className='h-1.5 w-full bg-gradient-to-r from-primary via-primary/50 to-[#A88566]' />
+							<CardContent className='p-6 py-4 md:p-10 md:py-6'>
+								<ContactForm />
+							</CardContent>
+						</Card>
+					</motion.div>
+
+					{/* DANE KONTAKTOWE */}
+					<div className='flex flex-col md:flex-row items-center justify-center gap-10 text-muted-foreground pt-4'>
+						<ContactLink
 							href='mailto:kontakt@nodusiq.pl'
-							className='flex items-center gap-2 hover:text-primary transition-colors'
-						>
-							<Mail className='w-5 h-5' /> kontakt@nodusiq.pl
-						</a>
-						<a href='tel:+48123456789' className='flex items-center gap-2 hover:text-primary transition-colors'>
-							<Phone className='w-5 h-5' /> +48 123 456 789
-						</a>
+							icon={<Mail className='w-5 h-5 text-primary' />}
+							label='kontakt@nodusiq.pl'
+						/>
+						<ContactLink
+							href='tel:+48512689242'
+							icon={<Phone className='w-5 h-5 text-primary' />}
+							label='512 689 242'
+						/>
 					</div>
 				</div>
 			</div>
 
-			{/* Dekoracja Nodus w tle (nawiązanie do layoutu) */}
-			<div className="absolute bottom-0 left-0 w-full h-64 bg-[url('/nodus-pattern.svg')] opacity-10 pointer-events-none" />
+			{/* Wzór siatki na dole */}
+			<div className="absolute bottom-0 left-0 w-full h-64 bg-[url('/nodus-pattern.svg')] opacity-[0.03] pointer-events-none" />
 		</section>
 	)
 }
+
+const ContactLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
+	<a
+		href={href}
+		className='group flex items-center gap-3 hover:text-primary transition-all duration-300 text-lg font-medium'
+	>
+		<div className='p-2 rounded-lg bg-secondary/10 group-hover:bg-primary/10 border border-border/40 group-hover:border-primary/30 transition-all'>
+			{icon}
+		</div>
+		{label}
+	</a>
+)

@@ -1,93 +1,54 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Home, PlugZap, Hammer } from 'lucide-react'
-
-// Definiujemy listę usług, żeby kod był czystszy i łatwiejszy do edycji
-const services = [
-	{
-		id: 1,
-		title: 'Smart Home',
-		description: 'Shelly/Sonoff. Oświetlenie, Rolety, Ogrzewanie.\n\nOszczędność & Komfort.',
-		icon: Home,
-	},
-	{
-		id: 2,
-		title: 'Instalacje Elektryczne',
-		description: 'Wymiana gniazdek, naprawa włączników, oświetlenie.\n\nCzysto.',
-		icon: PlugZap, // PlugZap świetnie pasuje do elektryki
-	},
-	{
-		id: 3,
-		title: 'Prace Montażowe',
-		description: 'Montaż TV, zawieszanie lamp, składanie mebli.\n\nPrecyzja.',
-		icon: Hammer,
-	},
-]
-
-// Konfiguracja animacji Framer Motion
-const containerVariants = {
-	hidden: { opacity: 0 },
-	show: {
-		opacity: 1,
-		transition: {
-			staggerChildren: 0.2, // Kafelki pojawiają się po kolei co 0.2s
-		},
-	},
-}
-
-const itemVariants = {
-	hidden: { opacity: 0, y: 30 },
-	show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-}
+import { SERVICES } from '@/constants/services'
+import { serviceContainerVariants } from '@/lib/animations'
+import { ServiceCard } from './ServiceCard'
 
 export function Services() {
 	return (
-		<section id='uslugi' className='py-20 md:py-32 bg-background relative z-10'>
-			<div className='container mx-auto px-4 md:px-6'>
-				{/* NAGŁÓWEK SEKCJI */}
+		<section id='uslugi' className='py-20 md:py-32 relative z-10 '>
+			{/* --- WARSTWA TŁA SEKCJI (Inżynieryjny sznyt w nagłówku) --- */}
+
+			<div className='container relative z-10 mx-auto px-4 md:px-6'>
+				{/* NAGŁÓWEK SEKCJI - Ulepszony styl z gradientem */}
 				<motion.div
-					initial={{ opacity: 0, y: 20 }}
+					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true, margin: '-100px' }}
-					transition={{ duration: 0.5 }}
-					className='text-center mb-16'
+					transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+					className='text-center mb-20 md:mb-24 space-y-4 max-w-3xl mx-auto'
 				>
-					<h2 className='text-3xl md:text-4xl font-bold tracking-tight text-foreground'>W czym możemy Ci pomóc?</h2>
+					{/* Subtelny badge nad nagłówkiem (spójność z Hero) */}
+					<span className='px-4 py-1.5  rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-[0.2em] uppercase'>
+						Nasza Ekspertyza
+					</span>
+
+					<h2 className='text-4xl md:text-5xl lg:text-6xl mt-4 font-black tracking-tighter text-foreground uppercase leading-[0.95]'>
+						W czym możemy <br />
+						<span className='text-transparent pr-3 bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-[#A88566] italic'>
+							Ci pomóc?
+						</span>
+					</h2>
 				</motion.div>
 
-				{/* GRID Z KAFELKAMI */}
-				<motion.div
-					variants={containerVariants}
-					initial='hidden'
-					whileInView='show'
-					viewport={{ once: true, margin: '-50px' }}
-					className='grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto'
-				>
-					{services.map(service => (
-						<motion.div
-							key={service.id}
-							variants={itemVariants}
-							className='group relative bg-card text-card-foreground rounded-2xl p-8 flex flex-col items-center text-center border border-border/40 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,174,239,0.25)] overflow-hidden'
-						>
-							{/* Ikona w błękitnym kolorze */}
-							<div className='mb-6 p-4 rounded-full bg-background/50 border border-border/50 group-hover:border-primary/30 transition-colors'>
-								<service.icon className='h-10 w-10 text-primary' strokeWidth={1.5} />
-							</div>
+				{/* GRID Z KAFELKAMI - Z radialnym gradientem tła */}
+				<div className='relative'>
+					{/* Delikatny radialny blask za siatką (efekt głębi) */}
+					<div className='absolute inset-[-100px]  pointer-events-none z-0' />
 
-							{/* Tytuł */}
-							<h3 className='text-xl font-semibold mb-4 text-foreground'>{service.title}</h3>
-
-							{/* Opis (z obsługą znaków nowej linii \n) */}
-							<p className='text-muted-foreground whitespace-pre-line text-sm md:text-base leading-relaxed'>
-								{service.description}
-							</p>
-
-							{/* Miedziany detal na dole kafelka (akcent z Twojego logo) */}
-							<div className='absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-300' />
-						</motion.div>
-					))}
-				</motion.div>
+					<motion.div
+						variants={serviceContainerVariants}
+						initial='hidden'
+						whileInView='show'
+						viewport={{ once: true, margin: '-50px' }}
+						className='relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto'
+					>
+						{SERVICES.map(service => (
+							<ServiceCard key={service.id} service={service} />
+						))}
+					</motion.div>
+				</div>
 			</div>
 		</section>
 	)
