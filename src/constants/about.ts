@@ -1,1 +1,6 @@
-export  const benefits = ['Doświadczenie w Toruniu', 'Minimalna interwencja', 'Terminowość & Czystość', 'Pełna integracja OZE']
+export const benefits = [
+	'Lokalny ekspert z Torunia',
+	'Montaż bez kucia ścian',
+	'Terminowość & Czystość',
+	'Gwarancja i wsparcie poinstalacyjne',
+]

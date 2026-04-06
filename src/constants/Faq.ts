@@ -1,38 +1,38 @@
 export const faqs = [
 	{
 		id: 'item-1',
-		question: 'Czy instalacja wymaga kucia ścian?',
+		question: 'Czy montaż inteligentnego domu wymaga kucia ścian?',
 		answer:
-			'Nie, systemy Shelly/Sonoff są bezprzewodowe. Montaż jest czysty, szybki i nie wymaga niszczenia ścian. Integracja odbywa się zazwyczaj w puszkach elektrycznych lub rozdzielnicy.',
+			'Absolutnie nie. Specjalizujemy się w instalacjach bezinwazyjnych opartych na modułach Shelly i Sonoff, które mieszczą się w puszkach elektrycznych. Twój Smart Home w Toruniu zamontujemy czysto, szybko i bez potrzeby robienia remontu.',
 	},
 	{
 		id: 'item-2',
-		question: 'Ile trwa montaż?',
+		question: 'Ile trwa instalacja systemu Smart Home?',
 		answer:
-			'Czas montażu zależy od skali projektu. Standardowa instalacja w mieszkaniu (sterowanie oświetleniem i roletami) zajmuje zazwyczaj 1-2 dni robocze. Oszacujemy to dokładnie podczas darmowej wyceny.',
+			'Większość realizacji na terenie Torunia i okolic zamykamy w 1-2 dni robocze. Czas zależy od liczby punktów (światło, rolety, ogrzewanie), ale dzięki naszemu doświadczeniu proces przebiega sprawnie i bez zakłócania domowego spokoju.',
 	},
 	{
 		id: 'item-3',
-		question: 'Czy mogę zarządzać domem z telefonu?',
+		question: 'Czy mogę sterować domem, będąc poza Toruniem?',
 		answer:
-			'Oczywiście. Całym systemem możesz wygodnie sterować z poziomu dedykowanej, darmowej aplikacji na swoim smartfonie, niezależnie od tego, czy jesteś w domu, czy na wakacjach.',
+			'Tak, masz pełną kontrolę z dowolnego miejsca na świecie. Wystarczy smartfon z dostępem do internetu. Niezależnie czy jesteś w pracy, czy na wakacjach, możesz sprawdzać stan urządzeń, podglądać kamery i zarządzać energią w aplikacji.',
 	},
 	{
 		id: 'item-4',
-		question: 'Czy mogę samodzielnie rozbudować system?',
+		question: 'Czy system można rozbudować w przyszłości?',
 		answer:
-			'Tak, systemy oparte na Shelly i Sonoff są wysoce modularne. Jeśli w przyszłości zechcesz dodać nowe obwody czy inteligentne gniazdka, można to zrobić bez większej ingerencji w obecny system.',
+			'To jedna z największych zalet naszych rozwiązań. System jest w pełni modułowy – możesz zacząć od sterowania oświetleniem w salonie, a z czasem dodawać kolejne funkcje, jak automatyka bram, nawadnianie ogrodu czy czujniki bezpieczeństwa.',
 	},
 	{
 		id: 'item-5',
-		question: 'Jaka jest gwarancja na urządzenia?',
+		question: 'Jak wygląda wsparcie i gwarancja?',
 		answer:
-			'Na wszystkie instalowane przez nas moduły producent udziela standardowej, 24-miesięcznej gwarancji. Ze swojej strony zapewniamy również wsparcie techniczne po zakończeniu montażu.',
+			'Jesteśmy lokalną firmą z Torunia, więc nie musisz czekać tygodniami na serwis. Na urządzenia udzielamy 24-miesięcznej gwarancji, a po montażu przeprowadzamy pełne szkolenie z obsługi i zapewniamy opiekę techniczną.',
 	},
 	{
 		id: 'item-6',
-		question: 'Jakie urządzenia można zintegrować?',
+		question: 'Co konkretnie mogę zautomatyzować w swoim domu?',
 		answer:
-			'Możemy zintegrować oświetlenie (w tym LED), rolety zewnętrzne, bramy garażowe, ogrzewanie (termostaty), klimatyzację oraz systemy rekuperacji. Pełna lista zależy od Twoich indywidualnych potrzeb.',
+			'Praktycznie wszystko: od oświetlenia LED i klasycznego, przez rolety, żaluzje i bramy garażowe, aż po zaawansowane sterowanie ogrzewaniem, klimatyzacją oraz systemami monitoringu i alarmu.',
 	},
 ]

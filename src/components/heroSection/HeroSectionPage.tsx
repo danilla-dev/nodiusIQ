@@ -48,10 +48,11 @@ export function Hero() {
 								Inteligencji.
 							</span>
 						</h1>
-						<p className='mx-auto max-w-[600px] text-muted-foreground text-lg md:text-xl font-light leading-relaxed mt-6'>
-							Twój dom staje się Smart. <span className='text-foreground font-medium'>Bez kucia ścian.</span>
+						<p className='mx-auto max-w-[650px] text-muted-foreground text-lg md:text-xl font-light leading-relaxed mt-6'>
+							Kompleksowa automatyzacja domowa w Toruniu.{' '}
+							<span className='text-foreground font-medium'>Bez kucia ścian.</span>
 							<br />
-							Profesjonalne instalacje Shelly & Sonoff w Toruniu.
+							Projektujemy i montujemy systemy Smart Home
 						</p>
 					</motion.div>
 

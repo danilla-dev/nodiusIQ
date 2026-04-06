@@ -13,21 +13,22 @@ export const SERVICES: Service[] = [
 	{
 		id: 1,
 		title: 'Smart Home',
-		description: 'Shelly/Sonoff. Oświetlenie, Rolety, Ogrzewanie.',
+		description: 'Inteligentne sterowanie oświetleniem, roletami i ogrzewaniem. Dopasujemy system do Twoich potrzeb.',
 		highlight: 'Oszczędność & Komfort.',
 		icon: Home,
 	},
 	{
 		id: 2,
 		title: 'Instalacje Elektryczne',
-		description: 'Wymiana gniazdek, naprawa włączników, oświetlenie.',
+		description:
+			'Wymiana gniazdek, naprawa włączników, oświetlenie. Usługi elektryczne i nowoczesne instalacje w domach i mieszkaniach na terenie Torunia.',
 		highlight: 'Czysto i Bezpiecznie.',
 		icon: PlugZap,
 	},
 	{
 		id: 3,
 		title: 'Prace Montażowe',
-		description: 'Montaż TV, zawieszanie lamp, składanie mebli.',
+		description: 'Profesjonalny montaż urządzeń RTV/AGD oraz oświetlenia. Szybko, czysto i solidnie.',
 		highlight: 'Precyzja w każdym calu.',
 		icon: Hammer,
 	},

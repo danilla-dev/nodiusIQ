@@ -66,6 +66,7 @@ const jsonLd = {
 		postalCode: '87-100',
 		addressCountry: 'PL',
 	},
+	priceRange: '$$',
 	geo: {
 		'@type': 'GeoCoordinates',
 		latitude: 53.01379, // Koordynaty Torunia
