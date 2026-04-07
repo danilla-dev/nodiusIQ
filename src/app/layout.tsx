@@ -66,15 +66,25 @@ const jsonLd = {
 		postalCode: '87-100',
 		addressCountry: 'PL',
 	},
+	areaServed: [
+		{
+			'@type': 'City',
+			name: 'Toruń',
+		},
+		{
+			'@type': 'City',
+			name: 'Bydgoszcz',
+		},
+		{
+			'@type': 'City',
+			name: 'Ciechocinek',
+		},
+	],
 	priceRange: '$$',
 	geo: {
 		'@type': 'GeoCoordinates',
 		latitude: 53.01379, // Koordynaty Torunia
 		longitude: 18.59844,
-	},
-	areaServed: {
-		'@type': 'City',
-		name: 'Toruń',
 	},
 	openingHoursSpecification: {
 		'@type': 'OpeningHoursSpecification',
