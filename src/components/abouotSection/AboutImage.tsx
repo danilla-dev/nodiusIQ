@@ -16,7 +16,7 @@ export function AboutImage() {
 			<div className='absolute inset-0 bg-primary/5 z-10 pointer-events-none' />
 
 			<Image
-				src='/about-image.jpg'
+				src='/about.png'
 				alt='Instalator NodiusIQ podczas pracy'
 				fill
 				className='object-cover object-center grayscale-[20%] hover:grayscale-0 transition-all duration-500'
