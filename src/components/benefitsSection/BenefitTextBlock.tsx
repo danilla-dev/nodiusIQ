@@ -19,7 +19,6 @@ export function BenefitTextBlock({ title, description, buttonText, align }: Bene
 			<ul className='space-y-3'>
 				{description.map((item, index) => (
 					<li key={index} className='flex items-center gap-3'>
-						<CheckHexIcon className='w-4 h-4 text-primary flex-shrink-0' />
 						<span className='text-sm md:text-base text-muted-foreground'>{item}</span>
 					</li>
 				))}

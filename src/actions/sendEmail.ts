@@ -26,9 +26,9 @@ export async function sendContactEmail(formData: z.infer<typeof formSchema>) {
 	try {
 		const { data, error } = await resend.emails.send({
 			from: 'NodiusIQ <kontakt@nodiusiq.pl>', // Musi być zweryfikowana domena w Resend
-			to: email, // Gdzie ma przyjść powiadomienie
-			subject: `Nowe zapytanie od: ${name}`,
-			replyTo: 'kontakt@nodusiq.pl',
+			to: 'kontakt@nodiusiq.pl', // Gdzie ma przyjść powiadomienie
+			subject: `Nowe zapytanie od: ${name} ,  ${email}`,
+			replyTo: 'kontakt@nodiusiq.pl',
 			html: `
   <div style="background-color: #05070A; padding: 40px 20px; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #FFFFFF;">
     <div style="max-width: 600px; margin: 0 auto; background-color: #0F1216; border: 1px solid #1E293B; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
