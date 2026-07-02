@@ -1,4 +1,4 @@
-import { Home, PlugZap, Hammer, LucideIcon } from 'lucide-react'
+import { Home, PlugZap, Shield, LucideIcon } from 'lucide-react'
 
 export interface Service {
 	id: number
@@ -12,24 +12,26 @@ export interface Service {
 export const SERVICES: Service[] = [
 	{
 		id: 1,
-		title: 'Smart Home',
-		description: 'Inteligentne sterowanie oświetleniem, roletami i ogrzewaniem. Dopasujemy system do Twoich potrzeb.',
-		highlight: 'Oszczędność & Komfort.',
+		title: 'Smart Home (Retrofit)',
+		description:
+			'Inteligentne sterowanie oświetleniem, roletami i temperaturą oparte o moduły Shelly i system Home Assistant. Nowoczesna automatyzacja bez kucia ścian i drogich remontów.',
+		highlight: 'Komfort & Oszczędność.',
 		icon: Home,
 	},
 	{
 		id: 2,
 		title: 'Instalacje Elektryczne',
 		description:
-			'Wymiana gniazdek, naprawa włączników, oświetlenie. Usługi elektryczne i nowoczesne instalacje w domach i mieszkaniach na terenie Torunia.',
-		highlight: 'Czysto i Bezpiecznie.',
+			'Przeróbki instalacji deweloperskich, przenoszenie punktów oraz profesjonalne podłączanie płyt indukcyjnych i AGD z wpisem do karty gwarancyjnej. Pełne uprawnienia SEP.',
+		highlight: 'Bezpieczeństwo z certyfikatem SEP.',
 		icon: PlugZap,
 	},
 	{
 		id: 3,
-		title: 'Prace Montażowe',
-		description: 'Profesjonalny montaż urządzeń RTV/AGD oraz oświetlenia. Szybko, czysto i solidnie.',
-		highlight: 'Precyzja w każdym calu.',
-		icon: Hammer,
+		title: 'Systemy Bezpieczeństwa',
+		description:
+			'Projektowanie i montaż nowoczesnych systemów alarmowych (Satel, Ajax) oraz monitoringu wizyjnego IP (Hikvision, Dahua) z inteligentnym wykrywaniem ludzi i pojazdów AI.',
+		highlight: 'Pełna kontrola w smartfonie.',
+		icon: Shield,
 	},
 ]

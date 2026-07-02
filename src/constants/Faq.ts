@@ -3,7 +3,7 @@ export const faqs = [
 		id: 'item-1',
 		question: 'Czy montaż inteligentnego domu wymaga kucia ścian?',
 		answer:
-			'Absolutnie nie. Specjalizujemy się w instalacjach bezinwazyjnych opartych na modułach Shelly i Sonoff, które mieszczą się w puszkach elektrycznych. Twój Smart Home w Toruniu zamontujemy czysto, szybko i bez potrzeby robienia remontu.',
+			'Absolutnie nie. Specjalizujemy się w instalacjach bezinwazyjnych opartych na modułach Shelly, które mieszczą się w puszkach elektrycznych. Twój Smart Home w Toruniu zamontujemy czysto, szybko i bez potrzeby robienia kosztownych remontów.',
 	},
 	{
 		id: 'item-2',
@@ -13,26 +13,32 @@ export const faqs = [
 	},
 	{
 		id: 'item-3',
-		question: 'Czy mogę sterować domem, będąc poza Toruniem?',
+		question: 'Czy systemy alarmowe i kamery działają, gdy braknie prądu lub internetu?',
 		answer:
-			'Tak, masz pełną kontrolę z dowolnego miejsca na świecie. Wystarczy smartfon z dostępem do internetu. Niezależnie czy jesteś w pracy, czy na wakacjach, możesz sprawdzać stan urządzeń, podglądać kamery i zarządzać energią w aplikacji.',
+			'Tak. Oferowane przez nas systemy alarmowe (np. Ajax, Satel) posiadają własne akumulatory awaryjne, które podtrzymują pracę systemu nawet przez kilkanaście godzin, a powiadomienia wysyłają przez sieć komórkową GSM. Kamery z technologią IP mogą nagrywać obraz lokalnie, zapewniając ciągłość ochrony niezależnie od warunków zewnętrznych.',
 	},
 	{
 		id: 'item-4',
-		question: 'Czy system można rozbudować w przyszłości?',
+		question: 'Jakie kamery i alarmy montujecie? Czy dostanę podgląd w telefonie?',
 		answer:
-			'To jedna z największych zalet naszych rozwiązań. System jest w pełni modułowy – możesz zacząć od sterowania oświetleniem w salonie, a z czasem dodawać kolejne funkcje, jak automatyka bram, nawadnianie ogrodu czy czujniki bezpieczeństwa.',
+			'Montujemy nowoczesne, cyfrowe systemy IP od wiodących producentów: Hikvision, Dahua oraz alarmy Satel i bezprzewodowe systemy Ajax. Wszystkie urządzenia konfigurujemy tak, abyś miał pełny podgląd na żywo, powiadomienia o wykryciu ludzi/pojazdów przez sztuczną inteligencję (AI) oraz kontrolę nad strefami alarmu bezpośrednio w aplikacji na smartfonie.',
 	},
 	{
 		id: 'item-5',
-		question: 'Jak wygląda wsparcie i gwarancja?',
+		question: 'Czy mogę sterować domem, będąc poza Toruniem?',
 		answer:
-			'Jesteśmy lokalną firmą z Torunia, więc nie musisz czekać tygodniami na serwis. Na urządzenia udzielamy 24-miesięcznej gwarancji, a po montażu przeprowadzamy pełne szkolenie z obsługi i zapewniamy opiekę techniczną.',
+			'Tak, masz pełną kontrolę z dowolnego miejsca na świecie. Wystarczy smartfon z dostępem do internetu. Niezależnie czy jesteś w pracy, czy na wakacjach, możesz sprawdzać stan urządzeń, podglądać obraz z kamer na żywo i zarządzać energią w aplikacji.',
 	},
 	{
 		id: 'item-6',
-		question: 'Co konkretnie mogę zautomatyzować w swoim domu?',
+		question: 'Czy system można rozbudować w przyszłości?',
 		answer:
-			'Praktycznie wszystko: od oświetlenia LED i klasycznego, przez rolety, żaluzje i bramy garażowe, aż po zaawansowane sterowanie ogrzewaniem, klimatyzacją oraz systemami monitoringu i alarmu.',
+			'To jedna z największych zalet naszych rozwiązań. System jest w pełni modułowy – możesz zacząć od sterowania oświetleniem w salonie i podłączenia indukcji, a z czasem dodawać kolejne funkcje, jak automatyka bram, dodatkowe kamery CCTV czy bezprzewodowe czujniki zalania.',
+	},
+	{
+		id: 'item-7',
+		question: 'Jak wygląda wsparcie, gwarancja i uprawnienia?',
+		answer:
+			'Jesteśmy lokalną firmą z Torunia, działamy szybko i na miejscu. Posiadamy pełne, państwowe uprawnienia elektryczne SEP E, co pozwala nam m.in. na bezpieczny montaż urządzeń i podbijanie gwarancji na sprzęt AGD (np. płyty indukcyjne). Na wszystkie wykonane instalacje oraz sprzęt udzielamy pełnej gwarancji i przeprowadzamy szkolenie dla domowników.',
 	},
 ]
